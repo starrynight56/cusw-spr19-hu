@@ -10,7 +10,7 @@ void setup(){
   //begin node definitions. 
   Rosanne = new Person("Rosanne", "4");
   //fill the arrayList
-  for(int i=0; i<255; i++){
+  for(int i=0; i<10; i++){
     Person p =  new Person("Person" +i, str(int(random(1,5))));
     p.randomLocation();
     people.add(p);
@@ -21,14 +21,32 @@ void setup(){
 //humans cannot comprehend more than 60fps so fps
 void draw(){
   background(0);
-  fill(255);
-  //ellipse(x,y,length, height)
-  ellipse(mouseX,mouseY,50,10+mouseY/100);
+  //fill(255);
+  ////ellipse(x,y,length, height)
+  //ellipse(mouseX,mouseY,50,10+mouseY/100);
   
  //draw rosanne
  Rosanne.drawPerson();
  
  for(Person p: people){
+    p.update();// updates location IF selected
    p.drawPerson();
  }
+}
+
+void mousePressed(){
+  //background(#FF0000,100);
+  for(Person p: people){
+    //for any given selection check if a person has been selection.
+    if(p.checkSelection()){
+      break;
+    };//ONLU SELECTS WHEN MOUSE IS CLICKED
+    
+  }
+}
+
+void mouseReleased(){
+  for (Person p: people){
+    p.locked = false;
+  }
 }
