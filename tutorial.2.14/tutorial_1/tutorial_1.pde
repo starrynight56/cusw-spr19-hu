@@ -1,5 +1,6 @@
 //step 1: create //allocate memory for ur person [global]
 ArrayList<Person> people;
+ArrayList<Connection> frands;//yes
 Person Rosanne;
 
 //runs once
@@ -7,6 +8,7 @@ void setup(){
   size(800,600);
   
   people = new ArrayList<Person>();
+  frands = new ArrayList<Connection>();
   //begin node definitions. 
   Rosanne = new Person("Rosanne", "4");
   //fill the arrayList
@@ -17,6 +19,19 @@ void setup(){
   }
   //background(0);// if u define it here your background will be stagnant
   //background(255);
+  
+  //who are our frands???
+  for(Person origin: people){
+    for(Person destination: people) {
+      //is person referencing it self!!!
+      if(!origin.name.equals(destination.name)){
+       ///check if they are same year
+        if(origin.year.equals(destination.year)){
+           frands.add(new Connection(origin, destination, "frands"));
+        }
+      }
+    }
+  }
 }
 //humans cannot comprehend more than 60fps so fps
 void draw(){
@@ -27,10 +42,14 @@ void draw(){
   
  //draw rosanne
  Rosanne.drawPerson();
- 
+ //draw people!!!!!! :DDDDD
  for(Person p: people){
     p.update();// updates location IF selected
    p.drawPerson();
+ }
+ //draw connects!!! :DDDDD
+ for(Connection c: frands){
+   c.draw();
  }
 }
 
