@@ -44,7 +44,7 @@ void draw(){
   //keep count of Elmos you have destroyed 
   //TODO: KEEP TRACK OF THIS. 
   text("Number of Elmos you have destroyed: " + destroyedElmos +"\n"
-   +"Horizontal Position of Piano: " + p.screenLocation.x, 10, 20);
+   +"Horizontal velocity of Piano: " + destroyedElmos*2 + "px/frame", 10, 20);
   
 }
 
