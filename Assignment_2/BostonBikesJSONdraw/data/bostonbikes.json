@@ -1,4 +1,5 @@
-[
+{
+  "bikeData":[
   {
     "Station ID": "A32019",
     "Station": "175 N Harvard St",
@@ -2529,3 +2530,4 @@
     "# of Docks": 15
   }
 ]
+}
