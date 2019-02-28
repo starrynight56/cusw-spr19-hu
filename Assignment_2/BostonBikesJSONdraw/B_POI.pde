@@ -8,8 +8,8 @@ class POI {
   float lat;
   float lon;
 
-  //Is ATM? 
-  boolean ATM;
+  //Is bikeLocation? 
+  boolean bikeLocation;
 
   //String to hold the type -- defaults to empty if there is none
   String type;
@@ -24,7 +24,7 @@ class POI {
     PVector screenLocation = map.getScreenLocation(coord);
     fill(poi_fill);
     noStroke();
-    if (ATM) fill(atm);
+    if (bikeLocation) fill(bikeStop);
     ellipse(screenLocation.x, screenLocation.y, 6, 6);
   }
 }

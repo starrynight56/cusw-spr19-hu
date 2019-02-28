@@ -1,6 +1,8 @@
 JSONObject example;
 JSONArray features;
+JSONObject bLocations;
 JSONObject wholeArea;
+JSONObject bikes; 
 //Look at https://processing.org/reference/JSONObject.html for more info
 
 void loadData(){
@@ -12,6 +14,7 @@ void loadData(){
   //example = loadJSONObject("data/example.json");
   //features = example.getJSONArray("features");
   
+  bLocations = loadJSONObject("data/bostonbikes.json");
   //Whole Area
   wholeArea = loadJSONObject("data/wholeArea.json");
   features = wholeArea.getJSONArray("features");
@@ -22,28 +25,36 @@ void loadData(){
 void parseData(){
   //First do the general object
   JSONObject feature = features.getJSONObject(0);
-
-  //Sort 3 types into our respective classes to draw
-  for(int i = 0; i< features.size(); i++){
-    //Idenitfy 3 main things; the properties, geometry, and type 
-    String type = features.getJSONObject(i).getJSONObject("geometry").getString("type");
-    JSONObject geometry = features.getJSONObject(i).getJSONObject("geometry");
+  //Pare location data of the bike stop locations
+    for(int i=0; i<bLocations.size(); i++){
+      
+      bLocations[i].getString("Latitude").getFloat();
+      bLocations.get
+      
+   //they create the amentity here 
     JSONObject properties =  features.getJSONObject(i).getJSONObject("properties");
     String amenity = properties.getJSONObject("tags").getString("amenity");
     String dataAmenity = properties.getJSONObject("tags").getString("amenity");
     if(dataAmenity != null) amenity = dataAmenity;
     else amenity = "";
     //Make POIs if it's a point
-    if(type.equals("Point")){
-      //create new POI
-      float lat = geometry.getJSONArray("coordinates").getFloat(1);
-      float lon = geometry.getJSONArray("coordinates").getFloat(0);
-      POI poi = new POI(lat, lon);
-      poi.type = amenity;
-      if(amenity.equals("atm")) poi.ATM = true;
-      pois.add(poi);
+      if(type.equals("Point")){
+        //create new POI
+        float lat = geometry.getJSONArray("coordinates").getFloat(1);
+        float lon = geometry.getJSONArray("coordinates").getFloat(0);
+        POI poi = new POI(lat, lon);
+        poi.type = amenity;
+        pois.add(poi);
+      }
     }
     
+
+  //Sort 3 types into our respective classes to draw
+  for(int i = 0; i< features.size(); i++){
+    //Idenitfy 3 main things; the properties, geometry, and type 
+    String type = features.getJSONObject(i).getJSONObject("geometry").getString("type");
+    JSONObject geometry = features.getJSONObject(i).getJSONObject("geometry");
+   
     //Polygons if polygon
     if(type.equals("Polygon")){
       ArrayList<PVector> coords = new ArrayList<PVector>();
