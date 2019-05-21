@@ -1,0 +1,15 @@
+What case study area did you pick and why?
+
+I picked comparing relative food insecurity in the Houston area and compared that with the
+how old the community is. 
+
+What metrics did you pick and why?
+I picked by population
+
+What statistical test did you use and why?
+
+Normal distribution because it was the easiest
+
+What was it's result (again not graded for accuracy)?
+
+it looked kinda weird but it worked
